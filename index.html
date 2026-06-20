@@ -559,8 +559,12 @@ function setSync(status, text) {
 async function apiGet() {
   setSync('loading', 'Sincronizando...');
   try {
-    const res = await fetch(API_URL + '?action=getAll');
-    const data = await res.json();
+    const res = await fetch(API_URL + '?action=getAll', {
+      method: 'GET',
+      redirect: 'follow'
+    });
+    const text = await res.text();
+    const data = JSON.parse(text);
     if (data.error) throw new Error(data.error);
     state.pedidos = data.pedidos || [];
     state.pares = data.pares || [];
@@ -579,10 +583,12 @@ async function apiPost(body) {
   try {
     const res = await fetch(API_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'text/plain' },
+      redirect: 'follow',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
       body: JSON.stringify(body)
     });
-    const data = await res.json();
+    const text = await res.text();
+    const data = JSON.parse(text);
     if (data.error) throw new Error(data.error);
     setSync('ok', 'Listo');
     return data;
