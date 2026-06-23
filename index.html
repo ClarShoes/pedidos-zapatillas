@@ -34,215 +34,119 @@
     padding-bottom: 90px;
   }
   h1, h2, h3, p { margin: 0; }
-  button {
-    font-family: inherit;
-    cursor: pointer;
-    border: none;
-    background: none;
-  }
+  button { font-family: inherit; cursor: pointer; border: none; background: none; }
   input, textarea, select {
-    font-family: inherit;
-    font-size: 16px;
-    width: 100%;
-    padding: 11px 12px;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border);
-    background: var(--surface);
-    color: var(--text);
+    font-family: inherit; font-size: 16px; width: 100%;
+    padding: 11px 12px; border-radius: var(--radius-sm);
+    border: 1px solid var(--border); background: var(--surface); color: var(--text);
   }
-  input:focus, textarea:focus, select:focus {
-    outline: none;
-    border-color: var(--accent);
-  }
+  input:focus, textarea:focus, select:focus { outline: none; border-color: var(--accent); }
 
-  /* ====== HEADER ====== */
+  /* HEADER */
   .topbar {
-    position: sticky;
-    top: 0;
-    z-index: 20;
-    background: var(--bg);
-    padding: 18px 16px 12px;
+    position: sticky; top: 0; z-index: 20;
+    background: var(--bg); padding: 18px 16px 12px;
     border-bottom: 1px solid var(--border);
   }
   .topbar-row { display: flex; align-items: center; justify-content: space-between; }
   .topbar h1 { font-size: 21px; font-weight: 600; letter-spacing: -0.3px; }
-  .sync-dot {
-    width: 7px; height: 7px; border-radius: 50%;
-    background: var(--success);
-    display: inline-block;
-  }
+  .sync-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--success); display: inline-block; }
   .sync-dot.loading { background: var(--warning); animation: pulse 1s infinite; }
   .sync-dot.error { background: var(--danger); }
   @keyframes pulse { 50% { opacity: 0.3; } }
   .sync-label { font-size: 11px; color: var(--text-3); display: flex; align-items: center; gap: 5px; }
-
-  .tabs {
-    display: flex;
-    gap: 6px;
-    margin-top: 14px;
-    overflow-x: auto;
-  }
-  .tab {
-    padding: 7px 14px;
-    border-radius: 100px;
-    font-size: 13.5px;
-    font-weight: 500;
-    color: var(--text-2);
-    background: var(--surface-2);
-    white-space: nowrap;
-  }
+  .tabs { display: flex; gap: 6px; margin-top: 14px; overflow-x: auto; }
+  .tab { padding: 7px 14px; border-radius: 100px; font-size: 13.5px; font-weight: 500; color: var(--text-2); background: var(--surface-2); white-space: nowrap; }
   .tab.active { background: var(--text); color: var(--surface); }
 
   .page { padding: 16px; max-width: 480px; margin: 0 auto; }
   .hidden { display: none !important; }
 
-  /* ====== CARDS (Inicio) ====== */
+  /* CARDS INICIO */
   .order-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 12px;
-    margin-bottom: 12px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); margin-bottom: 12px; overflow: hidden;
   }
-  .order-card-top { display: flex; gap: 12px; }
+  .order-card-main { display: flex; gap: 12px; padding: 12px 12px 10px; cursor: pointer; }
   .thumb {
-    width: 58px; height: 58px;
-    border-radius: var(--radius-sm);
-    background: var(--surface-2);
-    flex-shrink: 0;
+    width: 58px; height: 58px; border-radius: var(--radius-sm);
+    background: var(--surface-2); flex-shrink: 0;
     display: flex; align-items: center; justify-content: center;
-    overflow: hidden;
-    position: relative;
+    overflow: hidden; position: relative;
   }
   .thumb img { width: 100%; height: 100%; object-fit: cover; }
   .thumb .ph { color: var(--text-3); font-size: 22px; }
-  .thumb-badge {
-    position: absolute; bottom: 2px; right: 2px;
-    width: 16px; height: 16px; border-radius: 50%;
-    background: rgba(0,0,0,0.55);
-    display: flex; align-items: center; justify-content: center;
-  }
   .thumb-stack {
     position: absolute; top: 3px; right: 3px;
     background: rgba(0,0,0,0.6); color: white;
-    font-size: 9.5px; font-weight: 600;
-    padding: 1px 5px; border-radius: 100px;
+    font-size: 9.5px; font-weight: 600; padding: 1px 5px; border-radius: 100px;
   }
   .order-info { flex: 1; min-width: 0; }
   .order-client { font-size: 15px; font-weight: 600; margin-bottom: 2px; }
   .order-meta { font-size: 12.5px; color: var(--text-2); margin-bottom: 6px; }
   .badges { display: flex; gap: 5px; flex-wrap: wrap; }
-  .badge {
-    font-size: 11px; font-weight: 500;
-    padding: 3px 8px; border-radius: 100px;
-    display: inline-flex; align-items: center; gap: 3px;
-  }
+  .badge { font-size: 11px; font-weight: 500; padding: 3px 8px; border-radius: 100px; display: inline-flex; align-items: center; gap: 3px; }
   .badge.warn { background: var(--warning-light); color: var(--warning); }
   .badge.ok { background: var(--success-light); color: var(--success); }
   .badge.neutral { background: var(--surface-2); color: var(--text-2); }
   .badge.danger { background: var(--danger-light); color: var(--danger); }
+
+  /* Pie de card con deuda + acciones */
   .order-card-bottom {
     display: flex; justify-content: space-between; align-items: center;
-    margin-top: 10px; padding-top: 9px;
-    border-top: 1px solid var(--border);
+    padding: 9px 12px 10px; border-top: 1px solid var(--border);
   }
   .debt-label { font-size: 12px; color: var(--text-2); }
   .debt-amount { font-size: 16px; font-weight: 600; }
   .debt-amount.zero { color: var(--success); }
   .debt-amount.owed { color: var(--danger); }
-
-  .empty-state {
-    text-align: center;
-    padding: 50px 20px;
-    color: var(--text-3);
+  .card-delete-btn {
+    background: var(--danger-light); color: var(--danger);
+    border: none; border-radius: var(--radius-sm);
+    padding: 5px 10px; font-size: 12px; font-weight: 600; cursor: pointer;
   }
+  .card-delete-btn:active { opacity: 0.7; }
+
+  .empty-state { text-align: center; padding: 50px 20px; color: var(--text-3); }
   .empty-state .ic { font-size: 34px; margin-bottom: 10px; }
   .empty-state p { font-size: 14px; }
 
-  /* ====== FAB ====== */
+  /* FAB */
   .fab {
-    position: fixed;
-    bottom: 22px; left: 50%;
-    transform: translateX(-50%);
-    background: var(--text);
-    color: var(--surface);
-    border-radius: 100px;
-    padding: 14px 26px;
-    font-size: 15px;
-    font-weight: 600;
+    position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%);
+    background: var(--text); color: var(--surface);
+    border-radius: 100px; padding: 14px 26px;
+    font-size: 15px; font-weight: 600;
     display: flex; align-items: center; gap: 7px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.18);
-    z-index: 30;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.18); z-index: 30;
   }
   .fab:active { transform: translateX(-50%) scale(0.96); }
 
-  /* ====== FORM ====== */
+  /* FORM */
   .field { margin-bottom: 14px; }
-  .field label {
-    display: block;
-    font-size: 12.5px; font-weight: 600;
-    color: var(--text-2);
-    margin-bottom: 6px;
-  }
-  .section-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 14px;
-    margin-bottom: 14px;
-  }
-  .pair-block {
-    border-top: 1px solid var(--border);
-    padding-top: 12px;
-    margin-top: 12px;
-  }
+  .field label { display: block; font-size: 12.5px; font-weight: 600; color: var(--text-2); margin-bottom: 6px; }
+  .section-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; margin-bottom: 14px; }
+  .pair-block { border-top: 1px solid var(--border); padding-top: 12px; margin-top: 12px; }
   .pair-block:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
-  .pair-head {
-    display: flex; justify-content: space-between; align-items: center;
-    margin-bottom: 10px;
-  }
+  .pair-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
   .pair-head span { font-size: 12.5px; font-weight: 600; color: var(--text-2); }
-  .pair-remove { font-size: 12px; color: var(--danger); font-weight: 500; }
+  .pair-remove { font-size: 12px; color: var(--danger); font-weight: 500; cursor: pointer; }
   .pair-row { display: flex; gap: 10px; }
   .photo-input {
-    width: 64px; height: 64px;
-    border-radius: var(--radius-sm);
-    border: 1.5px dashed var(--text-3);
-    flex-shrink: 0;
+    width: 64px; height: 64px; border-radius: var(--radius-sm);
+    border: 1.5px dashed var(--text-3); flex-shrink: 0;
     display: flex; align-items: center; justify-content: center;
-    color: var(--text-3);
-    font-size: 22px;
-    position: relative;
-    overflow: hidden;
-    background: var(--surface-2);
+    color: var(--text-3); font-size: 22px;
+    position: relative; overflow: hidden; background: var(--surface-2); cursor: pointer;
   }
   .photo-input img { width: 100%; height: 100%; object-fit: cover; }
-  .photo-input input[type=file] {
-    position: absolute; inset: 0; opacity: 0; cursor: pointer; padding: 0;
-  }
-  .photo-input .expand-badge {
-    position: absolute; bottom: 2px; right: 2px;
-    width: 16px; height: 16px; border-radius: 50%;
-    background: rgba(0,0,0,0.55);
-    display: flex; align-items: center; justify-content: center;
-    z-index: 2;
-  }
+  .photo-input input[type=file] { position: absolute; inset: 0; opacity: 0; cursor: pointer; padding: 0; width: 100%; }
   .pair-fields { flex: 1; display: flex; flex-direction: column; gap: 7px; }
-  .alt-toggle {
-    display: flex; align-items: center; gap: 7px;
-    margin-top: 9px; font-size: 12.5px; color: var(--text-2);
-  }
-  .alt-toggle input { width: auto; padding: 0; }
 
   .btn {
-    width: 100%;
-    padding: 11px;
-    border-radius: var(--radius-sm);
-    font-size: 14.5px;
-    font-weight: 600;
-    border: 1px solid var(--border);
-    background: var(--surface);
-    color: var(--text);
+    width: 100%; padding: 11px; border-radius: var(--radius-sm);
+    font-size: 14.5px; font-weight: 600;
+    border: 1px solid var(--border); background: var(--surface); color: var(--text);
     display: flex; align-items: center; justify-content: center; gap: 6px;
   }
   .btn:active { transform: scale(0.98); }
@@ -253,155 +157,61 @@
   .btn-row { display: flex; gap: 8px; margin-top: 10px; }
   .btn-row .btn { flex: 1; }
 
-  /* ====== DETAIL ====== */
-  .detail-header {
-    display: flex; align-items: center; gap: 10px;
-    margin-bottom: 14px;
-  }
-  .back-btn {
-    font-size: 20px; color: var(--text);
-    width: 32px; height: 32px;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
+  /* DETALLE TIPO FACTURA */
+  .detail-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .back-btn { font-size: 20px; color: var(--text); width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .detail-header h2 { font-size: 18px; font-weight: 600; flex: 1; }
   .edit-toggle { color: var(--text-2); font-size: 18px; }
 
   .notes-box {
-    background: var(--warning-light);
-    border-radius: var(--radius-sm);
-    padding: 9px 11px;
-    margin-bottom: 14px;
-    font-size: 13px;
-    color: var(--warning);
+    background: var(--warning-light); border-radius: var(--radius-sm);
+    padding: 9px 11px; margin-bottom: 14px; font-size: 13px; color: var(--warning);
     display: flex; gap: 8px; align-items: flex-start;
   }
-  .notes-box .ic { flex-shrink: 0; margin-top: 1px; }
 
-  .section-title {
-    font-size: 12.5px; font-weight: 600; color: var(--text-2);
-    margin-bottom: 8px;
-  }
+  /* FACTURA */
+  .factura { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 12px; }
+  .factura-header { background: var(--text); color: var(--surface); padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; }
+  .factura-header-title { font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; opacity: 0.7; }
+  .factura-header-val { font-size: 14px; font-weight: 700; }
+  .factura-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; border-bottom: 1px solid var(--border); font-size: 13.5px; }
+  .factura-row:last-child { border-bottom: none; }
+  .factura-lbl { color: var(--text-2); }
+  .factura-val { font-weight: 500; text-align: right; max-width: 60%; word-break: break-word; }
 
-  .detail-pair-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 12px;
-    margin-bottom: 10px;
-  }
-  .detail-pair-top { display: flex; gap: 10px; margin-bottom: 10px; }
-  .detail-pair-thumb {
-    width: 54px; height: 54px;
-    border-radius: var(--radius-sm);
-    background: var(--surface-2);
-    flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center;
-    overflow: hidden;
-    color: var(--text-3);
-    position: relative;
-    cursor: pointer;
-  }
-  .detail-pair-thumb img { width: 100%; height: 100%; object-fit: cover; }
-  .detail-pair-info { flex: 1; }
-  .detail-pair-info .talle-row { display: flex; align-items: center; gap: 6px; }
-  .detail-pair-info .talle { font-size: 14px; font-weight: 600; }
-  .alt-tag {
-    font-size: 9.5px; font-weight: 600;
-    background: var(--surface-2); color: var(--text-2);
-    padding: 1px 6px; border-radius: 100px;
-  }
-  .detail-pair-info .venta-line { font-size: 12.5px; color: var(--text-2); margin-top: 2px; }
-  .status-badge-wrap { align-self: flex-start; }
+  /* Bloque par dentro de factura */
+  .par-bloque { border-bottom: 1px solid var(--border); }
+  .par-bloque:last-child { border-bottom: none; }
+  .par-bloque-header { background: var(--surface-2); padding: 8px 16px; display: flex; align-items: center; gap: 10px; }
+  .par-bloque-num { font-size: 11px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; }
+  .par-bloque-talle { font-size: 14px; font-weight: 600; flex: 1; }
+  .par-bloque-foto { width: 100%; max-height: 200px; object-fit: cover; display: block; cursor: pointer; }
+  .par-bloque-rows {}
 
-  .stat-row {
-    border-top: 1px solid var(--border);
-    padding-top: 9px; margin-top: 9px;
-    display: flex; flex-direction: column; gap: 3px;
-    font-size: 12.5px;
-  }
-  .stat-line { display: flex; justify-content: space-between; }
-  .stat-line .lbl { color: var(--text-2); }
-  .stat-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px;
-    margin-top: 8px;
-  }
-  .stat-box {
-    background: var(--surface-2);
-    border-radius: var(--radius-sm);
-    padding: 6px;
-    text-align: center;
-  }
-  .stat-box.profit { background: var(--success-light); }
-  .stat-box .lbl { font-size: 9.5px; color: var(--text-2); margin-bottom: 1px; display: block; }
-  .stat-box.profit .lbl { color: var(--success); }
-  .stat-box .val { font-size: 12.5px; font-weight: 600; }
-  .stat-box.profit .val { color: var(--success); }
+  /* Cobro */
+  .cobro-resumen { background: var(--surface-2); padding: 12px 16px; }
+  .cobro-line { display: flex; justify-content: space-between; font-size: 13.5px; margin-bottom: 5px; }
+  .cobro-line:last-child { margin-bottom: 0; }
+  .cobro-saldo { font-size: 17px; font-weight: 700; }
+  .saldo-track { height: 5px; background: var(--border); border-radius: 3px; overflow: hidden; margin-top: 10px; }
+  .saldo-fill { height: 100%; background: var(--success); border-radius: 3px; }
+  .pagos-lista { padding: 0 16px; }
+  .pago-line { display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 13.5px; }
+  .pago-line:last-child { border-bottom: none; }
+  .pago-line .pdebt { font-size: 12px; font-weight: 500; }
+  .pago-line .pdebt.owed { color: var(--danger); }
+  .pago-line .pdebt.clear { color: var(--success); }
 
-  .purchase-form { display: flex; flex-direction: column; gap: 7px; margin-top: 8px; }
-
-  .delivery-row {
-    display: flex; align-items: center; justify-content: space-between;
-    background: var(--success-light);
-    border-radius: var(--radius-sm);
-    padding: 11px 13px;
-    margin-bottom: 14px;
-  }
+  /* Entrega */
+  .delivery-row { display: flex; align-items: center; justify-content: space-between; background: var(--success-light); border-radius: var(--radius-sm); padding: 11px 13px; margin-bottom: 12px; }
   .delivery-row.pending { background: var(--surface-2); }
   .delivery-row .lbl { font-size: 13.5px; font-weight: 500; display: flex; align-items: center; gap: 6px; color: var(--success); }
   .delivery-row.pending .lbl { color: var(--text-2); }
-  .delivery-row button {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 7px 12px;
-    border-radius: var(--radius-sm);
-    font-size: 12.5px;
-    font-weight: 600;
-  }
+  .delivery-row button { background: var(--surface); border: 1px solid var(--border); padding: 7px 12px; border-radius: var(--radius-sm); font-size: 12.5px; font-weight: 600; }
 
-  .payments-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 13px;
-  }
-  .payments-head {
-    display: flex; justify-content: space-between; align-items: center;
-    margin-bottom: 10px;
-  }
-  .payments-head .total { font-size: 12.5px; color: var(--text-2); }
-  .payment-line {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 8px 0;
-    border-bottom: 1px solid var(--border);
-  }
-  .payment-line:last-of-type { border-bottom: none; }
-  .payment-line.pending { opacity: 0.45; }
-  .payment-line .left { display: flex; flex-direction: column; }
-  .payment-line .pname { font-size: 13px; }
-  .payment-line .pamount { font-size: 11.5px; color: var(--text-2); }
-  .payment-line .pdebt { font-size: 12.5px; font-weight: 500; }
-  .payment-line .pdebt.owed { color: var(--danger); }
-  .payment-line .pdebt.clear { color: var(--success); }
-
-  /* ====== HISTORY ====== */
-  .history-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 11px;
-    margin-bottom: 10px;
-    display: flex; gap: 10px; align-items: center;
-  }
-  .history-thumb {
-    width: 46px; height: 46px;
-    border-radius: var(--radius-sm);
-    background: var(--surface-2);
-    flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center;
-    overflow: hidden;
-    color: var(--text-3);
-  }
+  /* HISTORIAL */
+  .history-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 11px; margin-bottom: 10px; display: flex; gap: 10px; align-items: center; }
+  .history-thumb { width: 46px; height: 46px; border-radius: var(--radius-sm); background: var(--surface-2); flex-shrink: 0; display: flex; align-items: center; justify-content: center; overflow: hidden; color: var(--text-3); }
   .history-thumb img { width: 100%; height: 100%; object-fit: cover; }
   .history-info { flex: 1; min-width: 0; }
   .history-info .nm { font-size: 13.5px; font-weight: 600; }
@@ -410,83 +220,32 @@
   .history-profit .lbl { font-size: 9.5px; color: var(--text-2); }
   .history-profit .val { font-size: 13.5px; font-weight: 600; color: var(--success); }
 
-  /* ====== SUMMARY ====== */
-  .summary-row {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
-  }
-  .summary-line {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 13px 14px;
-    border-bottom: 1px solid var(--border);
-  }
+  /* RESUMEN */
+  .summary-row { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  .summary-line { display: flex; justify-content: space-between; align-items: center; padding: 13px 14px; border-bottom: 1px solid var(--border); cursor: pointer; }
   .summary-line:last-child { border-bottom: none; }
   .summary-line .nm { font-size: 14.5px; font-weight: 500; }
   .summary-line .amt { font-size: 14.5px; font-weight: 600; color: var(--danger); }
-  .summary-total {
-    text-align: center; padding: 14px 0 18px;
-    color: var(--text-2); font-size: 13px;
-  }
+  .summary-total { text-align: center; padding: 14px 0 18px; color: var(--text-2); font-size: 13px; }
   .summary-total .amt { font-size: 24px; font-weight: 700; color: var(--text); display: block; margin-top: 2px; }
 
-  /* ====== LIGHTBOX ====== */
-  .lightbox {
-    position: fixed; inset: 0;
-    background: rgba(20,16,12,0.94);
-    z-index: 100;
-    display: flex; align-items: center; justify-content: center;
-    flex-direction: column;
-  }
+  /* LIGHTBOX */
+  .lightbox { position: fixed; inset: 0; background: rgba(20,16,12,0.94); z-index: 100; display: flex; align-items: center; justify-content: center; flex-direction: column; }
   .lightbox img { max-width: 92%; max-height: 70vh; border-radius: 8px; object-fit: contain; }
   .lightbox .ph-big { color: rgba(255,255,255,0.3); font-size: 80px; }
-  .lightbox-close {
-    position: absolute; top: 18px; right: 18px;
-    width: 36px; height: 36px; border-radius: 50%;
-    background: rgba(255,255,255,0.12);
-    color: white; font-size: 18px;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .lightbox-caption {
-    margin-top: 16px; color: white; font-size: 14px;
-    background: rgba(255,255,255,0.1);
-    padding: 8px 16px; border-radius: 100px;
-  }
+  .lightbox-close { position: absolute; top: 18px; right: 18px; width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.12); color: white; font-size: 18px; display: flex; align-items: center; justify-content: center; }
+  .lightbox-caption { margin-top: 16px; color: white; font-size: 14px; background: rgba(255,255,255,0.1); padding: 8px 16px; border-radius: 100px; }
 
-  /* ====== BOTTOM SHEET (registrar pago) ====== */
-  .sheet-overlay {
-    position: fixed; inset: 0;
-    background: rgba(20,16,12,0.45);
-    z-index: 90;
-    display: flex; align-items: flex-end;
-  }
-  .sheet {
-    background: var(--bg);
-    width: 100%;
-    border-radius: 20px 20px 0 0;
-    padding: 20px 16px 26px;
-    max-width: 480px;
-    margin: 0 auto;
-  }
+  /* BOTTOM SHEET */
+  .sheet-overlay { position: fixed; inset: 0; background: rgba(20,16,12,0.45); z-index: 90; display: flex; align-items: flex-end; }
+  .sheet { background: var(--bg); width: 100%; border-radius: 20px 20px 0 0; padding: 20px 16px 26px; max-width: 480px; margin: 0 auto; }
   .sheet h3 { font-size: 16px; font-weight: 600; margin-bottom: 14px; }
 
-  .toast {
-    position: fixed; bottom: 90px; left: 50%; transform: translateX(-50%);
-    background: var(--text); color: var(--bg);
-    padding: 10px 18px; border-radius: 100px;
-    font-size: 13.5px; font-weight: 500;
-    z-index: 200;
-    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
-  }
+  .section-title { font-size: 12.5px; font-weight: 600; color: var(--text-2); margin-bottom: 8px; }
 
+  .toast { position: fixed; bottom: 90px; left: 50%; transform: translateX(-50%); background: var(--text); color: var(--bg); padding: 10px 18px; border-radius: 100px; font-size: 13.5px; font-weight: 500; z-index: 200; box-shadow: 0 6px 16px rgba(0,0,0,0.2); }
   .loader-wrap { display: flex; justify-content: center; padding: 40px 0; }
-  .spinner {
-    width: 22px; height: 22px; border-radius: 50%;
-    border: 2.5px solid var(--border);
-    border-top-color: var(--accent);
-    animation: spin 0.7s linear infinite;
-  }
+  .spinner { width: 22px; height: 22px; border-radius: 50%; border: 2.5px solid var(--border); border-top-color: var(--accent); animation: spin 0.7s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
 </style>
 </head>
@@ -510,23 +269,16 @@
 <div class="page hidden" id="page-historial"></div>
 <div class="page hidden" id="page-resumen"></div>
 
-<button class="fab" id="fabNuevo">
-  <span>+</span> Nuevo pedido
-</button>
-
+<button class="fab" id="fabNuevo"><span>+</span> Nuevo pedido</button>
 <div id="modalRoot"></div>
 
 <script>
 const API_URL = "https://script.google.com/macros/s/AKfycbwM2UMUUd0PbdjKODV3s0BDdlhvEUKk6gvmyKvamQdTJFTvEQzLK5z_00CY2PbdGx5OYw/exec";
 
 let state = {
-  pedidos: [],
-  pares: [],
-  pagos: [],
-  currentTab: 'inicio',
-  currentOrderId: null,
-  editingOrderId: null,
-  newPairs: [{ talle: '', precio_venta: '', foto_url: '', foto_preview: '', es_alternativa: false }]
+  pedidos: [], pares: [], pagos: [],
+  currentTab: 'inicio', currentOrderId: null, editingOrderId: null,
+  newPairs: [{ talle: '', precio_venta: '', foto_url: '', foto_preview: '', _file: null }]
 };
 
 // ============ UTILIDADES ============
@@ -536,12 +288,15 @@ function fmt(n) {
   return '$' + n.toLocaleString('es-CO');
 }
 
-function uid() {
-  return 'tmp_' + Math.random().toString(36).slice(2, 10);
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 }
 
 function showToast(msg) {
   const root = document.getElementById('modalRoot');
+  const old = root.querySelector('.toast');
+  if (old) old.remove();
   const t = document.createElement('div');
   t.className = 'toast';
   t.textContent = msg;
@@ -559,12 +314,8 @@ function setSync(status, text) {
 async function apiGet() {
   setSync('loading', 'Sincronizando...');
   try {
-    const res = await fetch(API_URL + '?action=getAll', {
-      method: 'GET',
-      redirect: 'follow'
-    });
-    const text = await res.text();
-    const data = JSON.parse(text);
+    const res = await fetch(API_URL + '?action=getAll', { method: 'GET', redirect: 'follow' });
+    const data = JSON.parse(await res.text());
     if (data.error) throw new Error(data.error);
     state.pedidos = data.pedidos || [];
     state.pares = data.pares || [];
@@ -582,13 +333,11 @@ async function apiPost(body) {
   setSync('loading', 'Guardando...');
   try {
     const res = await fetch(API_URL, {
-      method: 'POST',
-      redirect: 'follow',
+      method: 'POST', redirect: 'follow',
       headers: { 'Content-Type': 'text/plain;charset=utf-8' },
       body: JSON.stringify(body)
     });
-    const text = await res.text();
-    const data = JSON.parse(text);
+    const data = JSON.parse(await res.text());
     if (data.error) throw new Error(data.error);
     setSync('ok', 'Listo');
     return data;
@@ -611,69 +360,43 @@ function fileToBase64(file) {
 
 async function uploadPhoto(file) {
   const base64 = await fileToBase64(file);
-  const data = await apiPost({
-    action: 'subirFoto',
-    base64: base64,
-    mimeType: file.type,
-    nombre: 'zapatilla_' + Date.now() + '.jpg'
-  });
+  const data = await apiPost({ action: 'subirFoto', base64, mimeType: file.type, nombre: 'zapatilla_' + Date.now() + '.jpg' });
   return data ? data.url : null;
 }
 
-// ============ DERIVED HELPERS ============
+// ============ HELPERS NEGOCIO ============
 
-function getPairsForOrder(orderId) {
-  return state.pares.filter(p => p.id_pedido === orderId);
-}
-function getPaymentsForOrder(orderId) {
-  return state.pagos.filter(p => p.id_pedido === orderId).sort((a,b) => new Date(a.fecha) - new Date(b.fecha));
-}
-function getOrderTotal(orderId) {
-  return getPairsForOrder(orderId).reduce((sum, p) => sum + (Number(p.precio_venta) || 0), 0);
-}
-function getOrderPaid(orderId) {
-  const pedido = state.pedidos.find(p => p.id_pedido === orderId);
-  return pedido ? (Number(pedido.total_pagado) || 0) : 0;
-}
-function getOrderDebt(orderId) {
-  return Math.max(0, getOrderTotal(orderId) - getOrderPaid(orderId));
-}
+function getPairsForOrder(orderId) { return state.pares.filter(p => p.id_pedido === orderId); }
+function getPaymentsForOrder(orderId) { return state.pagos.filter(p => p.id_pedido === orderId).sort((a,b) => new Date(a.fecha) - new Date(b.fecha)); }
+function getOrderTotal(orderId) { return getPairsForOrder(orderId).reduce((sum, p) => sum + (Number(p.precio_venta) || 0), 0); }
+function getOrderPaid(orderId) { const p = state.pedidos.find(p => p.id_pedido === orderId); return p ? (Number(p.total_pagado) || 0) : 0; }
+function getOrderDebt(orderId) { return Math.max(0, getOrderTotal(orderId) - getOrderPaid(orderId)); }
 function getPurchaseStatus(orderId) {
   const pares = getPairsForOrder(orderId).filter(p => p.estado_compra !== 'cancelado');
   if (pares.length === 0) return 'pendiente';
-  if (pares.every(p => p.estado_compra === 'comprado')) return 'comprado';
-  return 'pendiente';
+  return pares.every(p => p.estado_compra === 'comprado') ? 'comprado' : 'pendiente';
 }
 function isOrderComplete(orderId) {
   const pedido = state.pedidos.find(p => p.id_pedido === orderId);
   if (!pedido) return false;
-  const compraOk = getPurchaseStatus(orderId) === 'comprado';
-  const entregaOk = pedido.estado_entrega === 'entregado';
-  const pagoOk = getOrderDebt(orderId) <= 0;
-  return compraOk && entregaOk && pagoOk;
+  return getPurchaseStatus(orderId) === 'comprado' && pedido.estado_entrega === 'entregado' && getOrderDebt(orderId) <= 0;
 }
 function firstPhoto(orderId) {
-  const pares = getPairsForOrder(orderId);
-  const withPhoto = pares.find(p => p.foto_url);
-  return withPhoto ? withPhoto.foto_url : null;
+  const p = getPairsForOrder(orderId).find(p => p.foto_url);
+  return p ? p.foto_url : null;
 }
 
-// ============ RENDER: INICIO ============
+// ============ RENDER INICIO ============
 
 function renderInicio() {
   const el = document.getElementById('page-inicio');
   const activos = state.pedidos.filter(p => !isOrderComplete(p.id_pedido));
 
   if (activos.length === 0) {
-    el.innerHTML = `
-      <div class="empty-state">
-        <div class="ic">&#128094;</div>
-        <p>No hay pedidos activos todavía.<br>Tocá "Nuevo pedido" para crear el primero.</p>
-      </div>`;
+    el.innerHTML = `<div class="empty-state"><div class="ic">&#128094;</div><p>No hay pedidos activos todavía.<br>Tocá "Nuevo pedido" para crear el primero.</p></div>`;
     return;
   }
 
-  // ordenar: por comprar primero, luego sin entregar, luego con deuda
   activos.sort((a, b) => new Date(b.fecha_creacion) - new Date(a.fecha_creacion));
 
   el.innerHTML = activos.map(pedido => {
@@ -683,22 +406,16 @@ function renderInicio() {
     const debt = getOrderDebt(pedido.id_pedido);
     const photo = firstPhoto(pedido.id_pedido);
     const talles = pares.map(p => p.talle).join(', ');
-    const photoCount = pares.filter(p => p.foto_url).length;
 
     let badges = '';
-    badges += compraStatus === 'comprado'
-      ? `<span class="badge ok">&#10003; Comprado</span>`
-      : `<span class="badge warn">Por comprar</span>`;
-    badges += entregado
-      ? `<span class="badge ok">&#10003; Entregado</span>`
-      : '';
+    badges += compraStatus === 'comprado' ? `<span class="badge ok">&#10003; Comprado</span>` : `<span class="badge warn">Por comprar</span>`;
+    if (entregado) badges += `<span class="badge ok">&#10003; Entregado</span>`;
 
     return `
       <div class="order-card" data-order="${pedido.id_pedido}">
-        <div class="order-card-top">
-          <div class="thumb" data-photo-click="${pedido.id_pedido}">
+        <div class="order-card-main" data-open-order="${pedido.id_pedido}">
+          <div class="thumb">
             ${photo ? `<img src="${photo}">` : `<span class="ph">&#128094;</span>`}
-            ${photo ? `<div class="thumb-badge">&#x26F6;</div>` : ''}
             ${pares.length > 1 ? `<div class="thumb-stack">${pares.length}</div>` : ''}
           </div>
           <div class="order-info">
@@ -708,19 +425,25 @@ function renderInicio() {
           </div>
         </div>
         <div class="order-card-bottom">
-          <span class="debt-label">Debe</span>
-          <span class="debt-amount ${debt <= 0 ? 'zero' : 'owed'}">${debt <= 0 ? 'Pagado' : fmt(debt)}</span>
+          <div>
+            <span class="debt-label">Debe</span><br>
+            <span class="debt-amount ${debt <= 0 ? 'zero' : 'owed'}">${debt <= 0 ? 'Pagado' : fmt(debt)}</span>
+          </div>
+          <button class="card-delete-btn" data-delete-order="${pedido.id_pedido}">🗑 Eliminar</button>
         </div>
       </div>`;
   }).join('');
 }
 
-function escapeHtml(str) {
-  if (!str) return '';
-  return String(str).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
-}
+// ============ RENDER NUEVO PEDIDO ============
+// FIX: usamos contador global para IDs únicos y no dependemos del índice del array
 
-// ============ RENDER: NUEVO PEDIDO ============
+let pairCounter = 0;
+
+function resetNewPairs() {
+  pairCounter = 0;
+  state.newPairs = [{ uid: pairCounter++, talle: '', precio_venta: '', foto_url: '', foto_preview: '', _file: null }];
+}
 
 function renderNuevoPedido() {
   const el = document.getElementById('page-nuevo');
@@ -744,13 +467,12 @@ function renderNuevoPedido() {
         <textarea id="inputNotas" rows="2" placeholder="Ej: si no hay el T42, llevar el T41">${pedidoExistente ? escapeHtml(pedidoExistente.notas || '') : ''}</textarea>
       </div>
       <button class="btn success" id="saveOrderBtn" style="margin-top:6px;">${editing ? 'Guardar cambios' : 'Crear pedido'}</button>
-    </div>
-  `;
-  renderPairsForm();
+    </div>`;
 
+  renderPairsForm();
   document.getElementById('nuevoBack').onclick = () => goToTab('inicio');
   document.getElementById('addPairBtn').onclick = () => {
-    state.newPairs.push({ talle: '', precio_venta: '', foto_url: '', foto_preview: '', es_alternativa: false });
+    state.newPairs.push({ uid: pairCounter++, talle: '', precio_venta: '', foto_url: '', foto_preview: '', _file: null });
     renderPairsForm();
   };
   document.getElementById('saveOrderBtn').onclick = saveOrder;
@@ -758,76 +480,80 @@ function renderNuevoPedido() {
 
 function renderPairsForm() {
   const container = document.getElementById('pairsContainer');
-  container.innerHTML = state.newPairs.map((pair, i) => `
-    <div class="pair-block">
-      <div class="pair-head">
-        <span>Par ${i + 1}</span>
-        ${state.newPairs.length > 1 ? `<span class="pair-remove" data-remove-pair="${i}">Quitar</span>` : ''}
-      </div>
-      <div class="pair-row">
-        <div class="photo-input" data-photo-preview="${i}">
-          ${pair.foto_preview ? `<img src="${pair.foto_preview}">` : `<span>&#128247;</span>`}
-          ${pair.foto_preview ? `<div class="expand-badge" data-expand-new="${i}">&#x26F6;</div>` : ''}
-          <input type="file" accept="image/*" data-photo-input="${i}">
-        </div>
-        <div class="pair-fields">
-          <input type="text" placeholder="Talle" value="${escapeHtml(pair.talle)}" data-pair-field="talle" data-pair-index="${i}">
-          <input type="number" placeholder="Precio de venta" value="${pair.precio_venta}" data-pair-field="precio_venta" data-pair-index="${i}">
-        </div>
-      </div>
-      <label class="alt-toggle">
-        <input type="checkbox" ${pair.es_alternativa ? 'checked' : ''} data-pair-field="es_alternativa" data-pair-index="${i}">
-        Es una alternativa ("por si acaso")
-      </label>
-    </div>
-  `).join('');
+  if (!container) return;
 
-  container.querySelectorAll('[data-pair-field]').forEach(input => {
-    input.addEventListener('input', (e) => {
-      const idx = Number(e.target.dataset.pairIndex);
-      const field = e.target.dataset.pairField;
-      state.newPairs[idx][field] = field === 'es_alternativa' ? e.target.checked : e.target.value;
-    });
-  });
-  container.querySelectorAll('[data-remove-pair]').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      state.newPairs.splice(Number(e.target.dataset.removePair), 1);
+  container.innerHTML = state.newPairs.map((pair, i) => {
+    const uid = pair.uid;
+    return `
+      <div class="pair-block" id="pair-block-${uid}">
+        <div class="pair-head">
+          <span>Par ${i + 1}</span>
+          ${state.newPairs.length > 1 ? `<span class="pair-remove" data-remove-uid="${uid}">Quitar</span>` : ''}
+        </div>
+        <div class="pair-row">
+          <div class="photo-input" id="photo-box-${uid}">
+            ${pair.foto_preview ? `<img src="${pair.foto_preview}" id="photo-img-${uid}">` : `<span id="photo-ph-${uid}">&#128247;</span>`}
+            <input type="file" accept="image/*" id="file-input-${uid}">
+          </div>
+          <div class="pair-fields">
+            <input type="text" placeholder="Talle" value="${escapeHtml(pair.talle)}" id="talle-${uid}">
+            <input type="number" placeholder="Precio de venta" value="${pair.precio_venta || ''}" id="venta-${uid}">
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+
+  // Eventos quitar
+  container.querySelectorAll('[data-remove-uid]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const uid = Number(btn.dataset.removeUid);
+      state.newPairs = state.newPairs.filter(p => p.uid !== uid);
       renderPairsForm();
     });
   });
-  container.querySelectorAll('[data-photo-input]').forEach(input => {
-    input.addEventListener('change', async (e) => {
-      const idx = Number(e.target.dataset.photoInput);
+
+  // Eventos foto
+  state.newPairs.forEach(pair => {
+    const fileInput = document.getElementById(`file-input-${pair.uid}`);
+    if (!fileInput) return;
+    fileInput.addEventListener('change', async (e) => {
       const file = e.target.files[0];
       if (!file) return;
       const localUrl = URL.createObjectURL(file);
-      state.newPairs[idx].foto_preview = localUrl;
-      state.newPairs[idx]._file = file;
-      renderPairsForm();
-    });
-  });
-  container.querySelectorAll('[data-expand-new]').forEach(badge => {
-    badge.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const idx = Number(e.target.dataset.expandNew);
-      openLightbox(state.newPairs[idx].foto_preview, 'Par ' + (idx + 1));
-    });
-  });
-  container.querySelectorAll('[data-photo-preview]').forEach(div => {
-    div.addEventListener('click', (e) => {
-      if (e.target.tagName === 'INPUT') return;
-      const idx = Number(div.dataset.photoPreview);
-      if (state.newPairs[idx].foto_preview) {
-        openLightbox(state.newPairs[idx].foto_preview, 'Par ' + (idx + 1));
+      pair.foto_preview = localUrl;
+      pair._file = file;
+      // Actualizar preview sin re-renderizar todo
+      const box = document.getElementById(`photo-box-${pair.uid}`);
+      if (box) {
+        const ph = document.getElementById(`photo-ph-${pair.uid}`);
+        if (ph) ph.remove();
+        let img = document.getElementById(`photo-img-${pair.uid}`);
+        if (!img) { img = document.createElement('img'); img.id = `photo-img-${pair.uid}`; box.insertBefore(img, fileInput); }
+        img.src = localUrl;
       }
     });
+  });
+
+  // Eventos texto — guardar al cambiar foco o escribir
+  state.newPairs.forEach(pair => {
+    const talleInput = document.getElementById(`talle-${pair.uid}`);
+    const ventaInput = document.getElementById(`venta-${pair.uid}`);
+    if (talleInput) talleInput.addEventListener('input', e => { pair.talle = e.target.value; });
+    if (ventaInput) ventaInput.addEventListener('input', e => { pair.precio_venta = e.target.value; });
   });
 }
 
 async function saveOrder() {
+  // Leer valores actuales de los inputs antes de guardar
+  state.newPairs.forEach(pair => {
+    const t = document.getElementById(`talle-${pair.uid}`);
+    const v = document.getElementById(`venta-${pair.uid}`);
+    if (t) pair.talle = t.value;
+    if (v) pair.precio_venta = v.value;
+  });
+
   const cliente = document.getElementById('inputCliente').value.trim();
   const notas = document.getElementById('inputNotas').value.trim();
-
   if (!cliente) { showToast('Falta el nombre del cliente'); return; }
   const validPairs = state.newPairs.filter(p => p.talle.trim() !== '');
   if (validPairs.length === 0) { showToast('Agregá al menos un par con talle'); return; }
@@ -836,7 +562,6 @@ async function saveOrder() {
   btn.textContent = 'Guardando...';
   btn.disabled = true;
 
-  // Subir fotos pendientes
   for (const pair of validPairs) {
     if (pair._file && !pair.foto_url) {
       const url = await uploadPhoto(pair._file);
@@ -849,23 +574,19 @@ async function saveOrder() {
     showToast('Pedido actualizado');
   } else {
     await apiPost({
-      action: 'crearPedido',
-      cliente, notas,
-      pares: validPairs.map(p => ({
-        talle: p.talle, precio_venta: Number(p.precio_venta) || 0,
-        foto_url: p.foto_url || '', es_alternativa: p.es_alternativa
-      }))
+      action: 'crearPedido', cliente, notas,
+      pares: validPairs.map(p => ({ talle: p.talle, precio_venta: Number(p.precio_venta) || 0, foto_url: p.foto_url || '', es_alternativa: false }))
     });
     showToast('Pedido creado');
   }
 
-  state.newPairs = [{ talle: '', precio_venta: '', foto_url: '', foto_preview: '', es_alternativa: false }];
+  resetNewPairs();
   state.editingOrderId = null;
   await refreshData();
   goToTab('inicio');
 }
 
-// ============ RENDER: DETALLE PEDIDO ============
+// ============ DETALLE TIPO FACTURA ============
 
 function renderDetalle(orderId) {
   const el = document.getElementById('page-detalle');
@@ -879,133 +600,127 @@ function renderDetalle(orderId) {
   const debt = getOrderDebt(orderId);
   const entregado = pedido.estado_entrega === 'entregado';
   const canEdit = !isOrderComplete(orderId);
+  const pct = total > 0 ? Math.round((paid / total) * 100) : 0;
 
+  // Pagos con saldo corrido
   let runningPaid = 0;
-  const paymentLines = pagos.map((pago, i) => {
+  const pagosHtml = pagos.map((pago, i) => {
     runningPaid += Number(pago.monto);
     const remaining = Math.max(0, total - runningPaid);
     return `
-      <div class="payment-line">
-        <div class="left">
-          <span class="pname">Pago ${i + 1}</span>
-          <span class="pamount">${fmt(pago.monto)}</span>
+      <div class="pago-line">
+        <div>
+          <div style="font-weight:500;">Pago ${i+1}</div>
+          <div style="font-size:12px;color:var(--text-2);">${fmt(pago.monto)}</div>
         </div>
-        <span class="pdebt ${remaining <= 0 ? 'clear' : 'owed'}">Debe ${fmt(remaining)}</span>
+        <span class="pdebt ${remaining <= 0 ? 'clear' : 'owed'}">Queda ${fmt(remaining)}</span>
       </div>`;
   }).join('');
 
-  const nextPaymentLine = debt > 0 ? `
-    <div class="payment-line pending">
-      <div class="left">
-        <span class="pname">Pago ${pagos.length + 1}</span>
-        <span class="pamount">Pendiente</span>
-      </div>
-      <span class="pdebt">Debe ${fmt(debt)}</span>
-    </div>` : '';
-
-  el.innerHTML = `
+  let html = `
     <div class="detail-header">
       <button class="back-btn" id="detalleBack">&#8592;</button>
       <h2>${escapeHtml(pedido.cliente)}</h2>
       ${canEdit ? `<button class="edit-toggle" id="editOrderBtn">&#9998;</button>` : ''}
     </div>
-    ${pedido.notas ? `<div class="notes-box"><span class="ic">&#128221;</span><span>${escapeHtml(pedido.notas)}</span></div>` : ''}
+    ${pedido.notas ? `<div class="notes-box"><span>&#128221;</span><span>${escapeHtml(pedido.notas)}</span></div>` : ''}
 
-    <div class="section-title">Pares (${pares.length})</div>
-    ${pares.map(par => renderPairCard(par, canEdit)).join('')}
+    <!-- BLOQUE PEDIDO -->
+    <div class="factura">
+      <div class="factura-header">
+        <span class="factura-header-title">Pedido</span>
+        <span class="factura-header-val">${escapeHtml(pedido.cliente)}</span>
+      </div>
+      <div class="factura-row"><span class="factura-lbl">Pares</span><span class="factura-val">${pares.length} ${pares.length===1?'par':'pares'}</span></div>
+      <div class="factura-row"><span class="factura-lbl">Estado</span><span class="factura-val">${entregado ? '✅ Entregado' : '🕐 En proceso'}</span></div>
+      <div class="factura-row"><span class="factura-lbl">Total venta</span><span class="factura-val" style="font-weight:700;">${fmt(total)}</span></div>
+    </div>
 
+    <!-- BLOQUE PARES -->
+    <div class="factura">
+      <div class="factura-header">
+        <span class="factura-header-title">Zapatillas</span>
+        <span class="factura-header-val">${pares.length} ${pares.length===1?'par':'pares'}</span>
+      </div>
+      ${pares.map((par, i) => {
+        const isComprado = par.estado_compra === 'comprado';
+        const isCancelado = par.estado_compra === 'cancelado';
+        const costo = Number(par.costo_compra) || 0;
+        const venta = Number(par.precio_venta) || 0;
+        const ganancia = venta - costo;
+        return `
+          <div class="par-bloque" style="${isCancelado ? 'opacity:0.5;' : ''}">
+            <div class="par-bloque-header">
+              <span class="par-bloque-num">Par ${i+1}</span>
+              <span class="par-bloque-talle">Talle ${escapeHtml(par.talle)}</span>
+              ${isCancelado ? `<span class="badge neutral">Cancelado</span>` : isComprado ? `<span class="badge ok">✓ Comprado</span>` : `<span class="badge warn">Por comprar</span>`}
+            </div>
+            ${par.foto_url ? `<img src="${par.foto_url}" class="par-bloque-foto" data-photo-click="${par.id_par}">` : ''}
+            <div class="par-bloque-rows">
+              <div class="factura-row"><span class="factura-lbl">Precio venta</span><span class="factura-val">${fmt(venta)}</span></div>
+              ${isComprado ? `
+                <div class="factura-row"><span class="factura-lbl">Centro comercial</span><span class="factura-val">${escapeHtml(par.tienda||'—')}</span></div>
+                <div class="factura-row"><span class="factura-lbl">Local</span><span class="factura-val">${escapeHtml(par.local||'—')}</span></div>
+                <div class="factura-row"><span class="factura-lbl">Costo compra</span><span class="factura-val">${fmt(costo)}</span></div>
+                <div class="factura-row" style="background:var(--success-light);"><span class="factura-lbl" style="color:var(--success);">Ganancia</span><span class="factura-val" style="color:var(--success);font-weight:700;">${fmt(ganancia)}</span></div>
+              ` : !isCancelado && canEdit ? `
+                <div class="factura-row" style="justify-content:center;padding:12px 16px;">
+                  <div style="display:flex;gap:8px;width:100%;">
+                    <button class="btn small" style="flex:1;" data-mark-comprado="${par.id_par}">Registrar compra</button>
+                    <button class="btn small danger-outline" style="flex:0 0 auto;" data-cancel-pair="${par.id_par}">Cancelar</button>
+                  </div>
+                </div>` : ''}
+            </div>
+          </div>`;
+      }).join('')}
+    </div>
+
+    <!-- ENTREGA -->
     <div class="delivery-row ${entregado ? '' : 'pending'}">
       <span class="lbl">&#128666; ${entregado ? 'Entregado' : 'Entrega pendiente'}</span>
       ${!entregado ? `<button data-mark-delivered="${orderId}">Marcar entregado</button>` : ''}
     </div>
 
-    <div class="payments-card">
-      <div class="payments-head">
-        <span class="section-title" style="margin:0;">Pagos</span>
-        <span class="total">Total ${fmt(total)}</span>
+    <!-- BLOQUE COBRO -->
+    <div class="factura">
+      <div class="factura-header">
+        <span class="factura-header-title">Cobro</span>
+        <span class="factura-header-val" style="${debt>0?'color:#FFCDD2':'color:#C8E6C9'}">${debt>0?'Pendiente':'✓ Saldado'}</span>
       </div>
-      ${paymentLines}
-      ${nextPaymentLine}
-      ${debt > 0 ? `<button class="btn primary" style="margin-top:10px;" data-register-payment="${orderId}">Registrar pago</button>` : `<div style="text-align:center; padding-top:8px; color:var(--success); font-size:13px; font-weight:500;">&#10003; Pagado completo</div>`}
+      <div class="cobro-resumen">
+        <div class="cobro-line"><span style="color:var(--text-2)">Total</span><span style="font-weight:600">${fmt(total)}</span></div>
+        <div class="cobro-line"><span style="color:var(--text-2)">Cobrado</span><span style="color:var(--success);font-weight:600">${fmt(paid)}</span></div>
+        <div class="cobro-line" style="margin-top:4px;"><span style="font-weight:700">Saldo pendiente</span><span class="cobro-saldo" style="color:${debt>0?'var(--danger)':'var(--success)'};">${fmt(debt)}</span></div>
+        <div class="saldo-track"><div class="saldo-fill" style="width:${pct}%"></div></div>
+        <div style="text-align:right;font-size:11px;color:var(--text-3);margin-top:4px;">${pct}% cobrado</div>
+      </div>
+      ${pagosHtml ? `<div class="pagos-lista"><div style="font-size:11px;font-weight:700;color:var(--text-3);padding:10px 0 4px;text-transform:uppercase;letter-spacing:0.06em;">Pagos recibidos</div>${pagosHtml}</div>` : ''}
+      ${debt > 0 ? `<div style="padding:12px 16px;"><button class="btn primary" data-register-payment="${orderId}">+ Registrar pago</button></div>` : `<div style="text-align:center;padding:10px;color:var(--success);font-size:13px;font-weight:500;">✓ Pagado completo</div>`}
     </div>
-  `;
+
+    <!-- ELIMINAR -->
+    <div style="margin-top:4px;margin-bottom:16px;">
+      <button class="btn danger-outline" data-delete-order="${orderId}">🗑 Eliminar pedido</button>
+    </div>`;
+
+  el.innerHTML = html;
 
   document.getElementById('detalleBack').onclick = () => goToTab('inicio');
   const editBtn = document.getElementById('editOrderBtn');
   if (editBtn) editBtn.onclick = () => openEditOrder(orderId);
 
-  el.querySelectorAll('[data-mark-comprado]').forEach(btn => {
-    btn.onclick = () => openPurchaseForm(btn.dataset.markComprado);
+  el.querySelectorAll('[data-mark-comprado]').forEach(btn => btn.onclick = () => openPurchaseForm(btn.dataset.markComprado));
+  el.querySelectorAll('[data-cancel-pair]').forEach(btn => btn.onclick = () => cancelPair(btn.dataset.cancelPair, orderId));
+  el.querySelectorAll('[data-mark-delivered]').forEach(btn => btn.onclick = () => markDelivered(btn.dataset.markDelivered));
+  el.querySelectorAll('[data-register-payment]').forEach(btn => btn.onclick = () => openPaymentSheet(btn.dataset.registerPayment, debt));
+  el.querySelectorAll('[data-photo-click]').forEach(img => img.onclick = () => {
+    const par = pares.find(p => p.id_par === img.dataset.photoClick);
+    if (par?.foto_url) openLightbox(par.foto_url, 'Talle ' + par.talle);
   });
-  el.querySelectorAll('[data-cancel-pair]').forEach(btn => {
-    btn.onclick = () => cancelPair(btn.dataset.cancelPair, orderId);
-  });
-  el.querySelectorAll('[data-mark-delivered]').forEach(btn => {
-    btn.onclick = () => markDelivered(btn.dataset.markDelivered);
-  });
-  el.querySelectorAll('[data-register-payment]').forEach(btn => {
-    btn.onclick = () => openPaymentSheet(btn.dataset.registerPayment, debt);
-  });
-  el.querySelectorAll('[data-photo-click]').forEach(div => {
-    div.onclick = () => {
-      const par = pares.find(p => p.id_par === div.dataset.photoClick);
-      if (par && par.foto_url) openLightbox(par.foto_url, 'Talle ' + par.talle);
-    };
-  });
-  el.querySelectorAll('[data-save-purchase]').forEach(btn => {
-    btn.onclick = () => savePurchase(btn.dataset.savePurchase);
-  });
+  el.querySelectorAll('[data-delete-order]').forEach(btn => btn.onclick = () => deleteOrder(btn.dataset.deleteOrder));
 }
 
-function renderPairCard(par, canEdit) {
-  const isComprado = par.estado_compra === 'comprado';
-  const isCancelado = par.estado_compra === 'cancelado';
-  const costo = Number(par.costo_compra) || 0;
-  const venta = Number(par.precio_venta) || 0;
-  const ganancia = venta - costo;
-
-  let statusBadge = '';
-  if (isCancelado) statusBadge = `<span class="badge neutral">Cancelado</span>`;
-  else if (isComprado) statusBadge = `<span class="badge ok">&#10003; Comprado</span>`;
-  else statusBadge = `<span class="badge warn">Por comprar</span>`;
-
-  return `
-    <div class="detail-pair-card" style="${isCancelado ? 'opacity:0.55;' : ''}">
-      <div class="detail-pair-top">
-        <div class="detail-pair-thumb" data-photo-click="${par.id_par}">
-          ${par.foto_url ? `<img src="${par.foto_url}">` : '&#128094;'}
-        </div>
-        <div class="detail-pair-info">
-          <div class="talle-row">
-            <span class="talle">Talle ${escapeHtml(par.talle)}</span>
-            ${par.es_alternativa === 'si' ? '<span class="alt-tag">Alternativa</span>' : ''}
-          </div>
-          <div class="venta-line">Venta ${fmt(venta)}</div>
-        </div>
-        <div class="status-badge-wrap">${statusBadge}</div>
-      </div>
-
-      ${isComprado ? `
-        <div class="stat-row">
-          <div class="stat-line"><span class="lbl">Tienda</span><span>${escapeHtml(par.tienda || '-')}</span></div>
-          <div class="stat-line"><span class="lbl">Local</span><span>${escapeHtml(par.local || '-')}</span></div>
-        </div>
-        <div class="stat-grid">
-          <div class="stat-box"><span class="lbl">Costo</span><span class="val">${fmt(costo)}</span></div>
-          <div class="stat-box"><span class="lbl">Venta</span><span class="val">${fmt(venta)}</span></div>
-          <div class="stat-box profit"><span class="lbl">Ganancia</span><span class="val">${fmt(ganancia)}</span></div>
-        </div>
-      ` : !isCancelado && canEdit ? `
-        <div class="btn-row">
-          <button class="btn small" data-mark-comprado="${par.id_par}">Marcar comprado</button>
-          <button class="btn small danger-outline" data-cancel-pair="${par.id_par}">Cancelar</button>
-        </div>
-      ` : ''}
-    </div>
-  `;
-}
-
-// ============ ACCIONES DETALLE ============
+// ============ ACCIONES ============
 
 function openPurchaseForm(parId) {
   const par = state.pares.find(p => p.id_par === parId);
@@ -1014,21 +729,18 @@ function openPurchaseForm(parId) {
     <div class="sheet-overlay" id="purchaseOverlay">
       <div class="sheet">
         <h3>Registrar compra · Talle ${escapeHtml(par.talle)}</h3>
-        <div class="field"><label>Tienda</label><input type="text" id="pTienda" placeholder="Ej: Deportes Sur"></div>
-        <div class="field"><label>Local</label><input type="text" id="pLocal" placeholder="Ej: Sucursal Centro"></div>
+        <div class="field"><label>Centro comercial</label><input type="text" id="pTienda" placeholder="Ej: Unicentro"></div>
+        <div class="field"><label>Local</label><input type="text" id="pLocal" placeholder="Ej: Nike, local 214"></div>
         <div class="field"><label>Costo de compra</label><input type="number" id="pCosto" placeholder="0"></div>
         <button class="btn success" id="confirmPurchase">Confirmar compra</button>
       </div>
-    </div>
-  `;
-  document.getElementById('purchaseOverlay').addEventListener('click', (e) => {
-    if (e.target.id === 'purchaseOverlay') root.innerHTML = '';
-  });
+    </div>`;
+  document.getElementById('purchaseOverlay').onclick = (e) => { if (e.target.id === 'purchaseOverlay') root.innerHTML = ''; };
   document.getElementById('confirmPurchase').onclick = async () => {
     const tienda = document.getElementById('pTienda').value.trim();
     const local = document.getElementById('pLocal').value.trim();
     const costo = document.getElementById('pCosto').value;
-    if (!tienda || !costo) { showToast('Completá tienda y costo'); return; }
+    if (!tienda || !costo) { showToast('Completá centro comercial y costo'); return; }
     await apiPost({ action: 'actualizarPar', id_par: parId, tienda, local, costo_compra: Number(costo), estado_compra: 'comprado' });
     root.innerHTML = '';
     await refreshData();
@@ -1038,7 +750,7 @@ function openPurchaseForm(parId) {
 }
 
 async function cancelPair(parId, orderId) {
-  if (!confirm('¿Cancelar este par? Quedará marcado como cancelado.')) return;
+  if (!confirm('¿Cancelar este par?')) return;
   await apiPost({ action: 'actualizarPar', id_par: parId, estado_compra: 'cancelado' });
   await refreshData();
   renderDetalle(orderId);
@@ -1064,39 +776,34 @@ function openPaymentSheet(orderId, debt) {
         </div>
         <button class="btn primary" id="confirmPayment">Registrar</button>
       </div>
-    </div>
-  `;
-  document.getElementById('paymentOverlay').addEventListener('click', (e) => {
-    if (e.target.id === 'paymentOverlay') root.innerHTML = '';
-  });
+    </div>`;
+  document.getElementById('paymentOverlay').onclick = (e) => { if (e.target.id === 'paymentOverlay') root.innerHTML = ''; };
   document.getElementById('confirmPayment').onclick = async () => {
     const monto = Number(document.getElementById('pagoMonto').value);
     if (!monto || monto <= 0) { showToast('Ingresá un monto válido'); return; }
     await apiPost({ action: 'registrarPago', id_pedido: orderId, monto });
     root.innerHTML = '';
     await refreshData();
-    if (isOrderComplete(orderId)) {
-      showToast('Pedido completado');
-      goToTab('inicio');
-    } else {
-      renderDetalle(orderId);
-      showToast('Pago registrado');
-    }
+    if (isOrderComplete(orderId)) { showToast('Pedido completado'); goToTab('inicio'); }
+    else { renderDetalle(orderId); showToast('Pago registrado'); }
   };
 }
 
-function openEditOrder(orderId) {
-  const pedido = state.pedidos.find(p => p.id_pedido === orderId);
-  const pares = getPairsForOrder(orderId);
-  state.editingOrderId = orderId;
-  state.newPairs = pares.map(p => ({
-    talle: p.talle, precio_venta: p.precio_venta, foto_url: p.foto_url,
-    foto_preview: p.foto_url, es_alternativa: p.es_alternativa === 'si', id_par: p.id_par
-  }));
-  goToTab('nuevo');
+async function deleteOrder(orderId) {
+  if (!confirm('¿Eliminar este pedido? Esta acción no se puede deshacer.')) return;
+  await apiPost({ action: 'eliminarPedido', id_pedido: orderId });
+  await refreshData();
+  showToast('Pedido eliminado');
+  goToTab('inicio');
 }
 
-// ============ LIGHTBOX ============
+function openEditOrder(orderId) {
+  const pares = getPairsForOrder(orderId);
+  state.editingOrderId = orderId;
+  pairCounter = 0;
+  state.newPairs = pares.map(p => ({ uid: pairCounter++, talle: p.talle, precio_venta: p.precio_venta, foto_url: p.foto_url, foto_preview: p.foto_url, _file: null, id_par: p.id_par }));
+  goToTab('nuevo');
+}
 
 function openLightbox(url, caption) {
   const root = document.getElementById('modalRoot');
@@ -1105,80 +812,62 @@ function openLightbox(url, caption) {
       <button class="lightbox-close" id="lightboxClose">&#10005;</button>
       ${url ? `<img src="${url}">` : `<span class="ph-big">&#128094;</span>`}
       ${caption ? `<div class="lightbox-caption">${escapeHtml(caption)}</div>` : ''}
-    </div>
-  `;
-  const close = () => root.innerHTML = '';
-  document.getElementById('lightboxClose').onclick = close;
-  document.getElementById('lightboxEl').onclick = (e) => { if (e.target.id === 'lightboxEl') close(); };
+    </div>`;
+  document.getElementById('lightboxClose').onclick = () => root.innerHTML = '';
+  document.getElementById('lightboxEl').onclick = (e) => { if (e.target.id === 'lightboxEl') root.innerHTML = ''; };
 }
 
-// ============ RENDER: HISTORIAL ============
+// ============ HISTORIAL ============
 
 function renderHistorial() {
   const el = document.getElementById('page-historial');
   const completos = state.pedidos.filter(p => isOrderComplete(p.id_pedido));
-
   if (completos.length === 0) {
     el.innerHTML = `<div class="empty-state"><div class="ic">&#128203;</div><p>Todavía no hay pedidos completados.</p></div>`;
     return;
   }
-
   completos.sort((a, b) => new Date(b.fecha_creacion) - new Date(a.fecha_creacion));
-
   el.innerHTML = completos.map(pedido => {
     const pares = getPairsForOrder(pedido.id_pedido).filter(p => p.estado_compra !== 'cancelado');
     const photo = firstPhoto(pedido.id_pedido);
     const talles = pares.map(p => p.talle).join(', ');
     const ganancia = pares.reduce((sum, p) => sum + ((Number(p.precio_venta)||0) - (Number(p.costo_compra)||0)), 0);
     return `
-      <div class="history-card">
+      <div class="history-card" onclick="state.currentOrderId='${pedido.id_pedido}';goToTab('detalle');">
         <div class="history-thumb">${photo ? `<img src="${photo}">` : '&#128094;'}</div>
         <div class="history-info">
           <div class="nm">${escapeHtml(pedido.cliente)}</div>
-          <div class="det">Talle ${talles} · ${pares.length} ${pares.length === 1 ? 'par' : 'pares'}</div>
+          <div class="det">T${talles} · ${pares.length} ${pares.length===1?'par':'pares'}</div>
         </div>
         <div class="history-profit">
           <div class="lbl">Ganancia</div>
           <div class="val">${fmt(ganancia)}</div>
         </div>
-      </div>
-    `;
+      </div>`;
   }).join('');
 }
 
-// ============ RENDER: RESUMEN ============
+// ============ RESUMEN ============
 
 function renderResumen() {
   const el = document.getElementById('page-resumen');
   const activos = state.pedidos.filter(p => !isOrderComplete(p.id_pedido) && getOrderDebt(p.id_pedido) > 0);
-
   if (activos.length === 0) {
     el.innerHTML = `<div class="empty-state"><div class="ic">&#128181;</div><p>Nadie debe plata por ahora.</p></div>`;
     return;
   }
-
   activos.sort((a, b) => getOrderDebt(b.id_pedido) - getOrderDebt(a.id_pedido));
   const totalDebt = activos.reduce((sum, p) => sum + getOrderDebt(p.id_pedido), 0);
-
   el.innerHTML = `
     <div class="section-title">Quién debe</div>
     <div class="summary-row">
       ${activos.map(p => `
-        <div class="summary-line" data-go-order="${p.id_pedido}">
+        <div class="summary-line" onclick="state.currentOrderId='${p.id_pedido}';goToTab('detalle');">
           <span class="nm">${escapeHtml(p.cliente)}</span>
           <span class="amt">${fmt(getOrderDebt(p.id_pedido))}</span>
-        </div>
-      `).join('')}
+        </div>`).join('')}
     </div>
-    <div class="summary-total">Total por cobrar<span class="amt">${fmt(totalDebt)}</span></div>
-  `;
-
-  el.querySelectorAll('[data-go-order]').forEach(row => {
-    row.onclick = () => {
-      state.currentOrderId = row.dataset.goOrder;
-      goToTab('detalle');
-    };
-  });
+    <div class="summary-total">Total por cobrar<span class="amt">${fmt(totalDebt)}</span></div>`;
 }
 
 // ============ NAVEGACIÓN ============
@@ -1187,7 +876,6 @@ function goToTab(tab) {
   state.currentTab = tab;
   document.querySelectorAll('.page').forEach(p => p.classList.add('hidden'));
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-
   const fab = document.getElementById('fabNuevo');
 
   if (tab === 'inicio') {
@@ -1216,54 +904,39 @@ function goToTab(tab) {
   }
 }
 
-document.querySelectorAll('.tab').forEach(tab => {
-  tab.addEventListener('click', () => goToTab(tab.dataset.tab));
-});
+document.querySelectorAll('.tab').forEach(tab => tab.addEventListener('click', () => goToTab(tab.dataset.tab)));
 
 document.getElementById('fabNuevo').addEventListener('click', () => {
   state.editingOrderId = null;
-  state.newPairs = [{ talle: '', precio_venta: '', foto_url: '', foto_preview: '', es_alternativa: false }];
+  resetNewPairs();
   goToTab('nuevo');
 });
 
-// Delegación para click en tarjetas de inicio
+// Delegación clicks en tarjetas de inicio
 document.getElementById('page-inicio').addEventListener('click', (e) => {
-  const photoDiv = e.target.closest('[data-photo-click]');
-  if (photoDiv) {
-    const orderId = photoDiv.dataset.photoClick;
-    const photo = firstPhoto(orderId);
-    if (photo) {
-      openLightbox(photo, state.pedidos.find(p => p.id_pedido === orderId)?.cliente || '');
-      return;
-    }
-  }
-  const card = e.target.closest('.order-card');
-  if (card) {
-    state.currentOrderId = card.dataset.order;
-    goToTab('detalle');
-  }
+  const deleteBtn = e.target.closest('[data-delete-order]');
+  if (deleteBtn) { deleteOrder(deleteBtn.dataset.deleteOrder); return; }
+  const openBtn = e.target.closest('[data-open-order]');
+  if (openBtn) { state.currentOrderId = openBtn.dataset.openOrder; goToTab('detalle'); return; }
+  const card = e.target.closest('.order-card-main');
+  if (card) { state.currentOrderId = card.dataset.openOrder; goToTab('detalle'); }
 });
 
 // ============ INIT ============
 
-async function refreshData() {
-  await apiGet();
-}
+async function refreshData() { await apiGet(); }
 
 async function init() {
   document.getElementById('page-inicio').innerHTML = `<div class="loader-wrap"><div class="spinner"></div></div>`;
   const ok = await apiGet();
   if (!ok) {
-    document.getElementById('page-inicio').innerHTML = `
-      <div class="empty-state">
-        <div class="ic">&#9888;</div>
-        <p>No se pudo conectar. Revisá tu conexión y volvé a abrir la app.</p>
-      </div>`;
+    document.getElementById('page-inicio').innerHTML = `<div class="empty-state"><div class="ic">&#9888;</div><p>No se pudo conectar. Revisá tu conexión.</p></div>`;
     return;
   }
   renderInicio();
 }
 
+resetNewPairs();
 init();
 </script>
 </body>
