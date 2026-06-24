@@ -570,7 +570,9 @@ async function saveOrder() {
   }
 
   if (state.editingOrderId) {
-    await apiPost({ action: 'editarPedido', id_pedido: state.editingOrderId, cliente, notas });
+    await apiPost({ action: 'editarPedido', id_pedido: state.editingOrderId, cliente, notas,
+  pares: validPairs.map(p => ({ id_par: p.id_par || null, talle: p.talle, precio_venta: Number(p.precio_venta) || 0 }))
+});
     showToast('Pedido actualizado');
   } else {
     await apiPost({
